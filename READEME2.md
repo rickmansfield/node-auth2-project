@@ -34,3 +34,55 @@
 - build out secrets/index.js
 - build .env contents
 - bring into root index.js
+
+## 6 Configure Debugger 
+- Note I DO NOT USE THIS MYSELF... but you may find it helpful
+
+-  [Helpful Debugger restart using Nodemon](#helpful-debugger-restart-using-nodemon)
+
+``` json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node", 
+            "request": "launch",
+            "name": "nodemon",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/index.js",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "debug": "app:*",
+            }
+        }
+    ]
+}
+
+//be sure nodmone is installed globally 
+//npm i -g nodemon
+```
+
+## 7 Stubb out server.js
+- for this project it was already done for us
+
+## 8 Inspect and stubb models.js
+- Start with users-models.js
+  - to do this you may need to inspect the routes first.
+  - in the real world you'd have to stubb out the route next and then start testing each rout and model stubb before moving forward. 
+- find() needs this SQL editor solution
+  ```sql
+  select
+    user_id,
+    username,
+    role_name
+    from users
+    join roles on 
+        users.role_id = roles.role_id;
+    ```
+- 
+    ```
+    test http :5000/api/users
+    ```
+- notice the test just hangs without next() in auth-middleware.js in restricted. Add it if you didn't already
