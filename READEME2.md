@@ -71,9 +71,10 @@
 - Start with users-models.js
   - to do this you may need to inspect the routes first.
   - in the real world you'd have to stubb out the route next and then start testing each rout and model stubb before moving forward. 
-- find() needs this SQL editor solution
-  ```sql
-  select
+- __find()__ needs this SQL editor solution
+- 
+    ```sql
+    select
     user_id,
     username,
     role_name
@@ -82,7 +83,20 @@
         users.role_id = roles.role_id;
     ```
 - 
-    ```
+    ``` sql
     test http :5000/api/users
     ```
 - notice the test just hangs without next() in auth-middleware.js in restricted. Add it if you didn't already
+- __findBy(filter)__
+    ```sql
+    select
+        user_id,
+        username,
+        password,
+        role_name
+    from users
+    join roles on 
+        users.role_id = roles.role_id
+        where user_id = 1;
+    ```
+-
