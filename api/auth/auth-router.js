@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { checkUsernameExists, validateRoleName } = require('./auth-middleware');
 const { JWT_SECRET } = require("../secrets"); // use this secret!
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const User = require('../users/users-model');
 router.post("/register", validateRoleName, (req, res, next) => {
   /**
@@ -51,17 +51,18 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
       const token = buildToken(req.user);
       res.json({
         message: `${req.user.username} is back!`,
-        token
+        token,
       });
-    }else{
+    } else {
       next({
         status: 401,
         message: 'Invalid credentials'
       });
     }
 });
+
 function buildToken(user){
-  const payload= {
+  const payload = {
     subject: user.user_id,
     role_name: user.role_name,
     username: user.username
