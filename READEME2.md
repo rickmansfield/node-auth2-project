@@ -105,4 +105,4 @@
   
 ## 9 Build out Middleware
 - start with validateRoleName
-- with that build out you can jump to auth-router.js POST /register endpoint and complet it. 
+- with that build out you can jump to auth-router.js POST /register endpoint and complete it too. 
