@@ -99,4 +99,10 @@
         users.role_id = roles.role_id
         where user_id = 1;
     ```
--
+- __findById(user_id)__ 
+  - go to users-model.js to see what I did. 
+  - test it .. remember to put next() in the const only = role_name method of auth-middleware
+  
+## 9 Build out Middleware
+- start with validateRoleName
+- with that build out you can jump to auth-router.js POST /register endpoint and complet it. 
